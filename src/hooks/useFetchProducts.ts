@@ -13,18 +13,18 @@ export const useFetchProducts = (category?: string) => {
       setLoading(true);
       setError(null);
       try {
-        // 1. Посилаємось на нашу плоску колекцію 'products'
+        // 1. See the collection
         const productsRef = collection(db, "products");
 
-        // 2. Якщо передали категорію — робимо запит із фільтром, якщо ні — беремо все
+        // 2. If a category was provided, we make a query with a filter; if not, we retrieve everything
         const q = category
           ? query(productsRef, where("category", "==", category))
           : query(productsRef);
 
-        // 3. Отримуємо "знімок" даних від Firebase (це асинхронна операція!)
+        // 3. We retrieve a snapshot of data from Firebase
         const querySnapshot = await getDocs(q);
 
-        // 4. Мапимо документи з бази у звичайний масив об'єктів для React
+        // 4. Mapping documents from the database to a regular array of objects
         const fetchedProducts = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),

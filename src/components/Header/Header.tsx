@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import {
   ChevronDown,
   TextAlignJustify,
   Search,
   ShoppingCart,
   CircleUserRound,
+  Clock,
+  MapPin,
 } from "lucide-react";
 
 function Header() {
+  const [shopInfoOpen, setShopInfoOpen] = useState(false);
+
   return (
     <div>
       <div className="relative w-full flex justify-between bg-black h-11 px-4">
@@ -18,13 +23,61 @@ function Header() {
             </Link>
           </div>
         </div>
-        <div className="m-auto">
-          <button className="flex">
-            <p className="text-xs font-poppins text-white font-semibold max-w-44">
-              <span className="text-gray-400">Mon-Thu:</span> 9:00 AM - 5:30 PM
+        <div className="m-auto relative">
+          <button
+            onClick={() => setShopInfoOpen(!shopInfoOpen)}
+            className="flex"
+          >
+            <p className="text-xs font-poppins font-semibold max-w-44">
+              <span className="text-gray-400">Mon-Thu:</span>{" "}
+              <span className="text-white ">9:00 AM - 5:30 PM</span>
             </p>
             <ChevronDown color="#fff" size={17} />
           </button>
+          {shopInfoOpen ? (
+            <div className="fixed left-1/2 top-9 z-50 w-full max-w-80 -translate-x-1/2 bg-white shadow-xl">
+              <div className="flex flex-col">
+                <div className="flex gap-3 font-semibold px-8 py-3">
+                  <Clock color="#000" />
+                  <div className="flex flex-col gap-2">
+                    <p className="text-xs">We are open:</p>
+                    <p className="text-sm">
+                      <span className="text-gray-400">Mon-Thu:</span> 9:00 AM -
+                      5:30 PM
+                    </p>
+                    <p>
+                      <span className="text-gray-400">Fr:</span> 9:00 AM - 6:00
+                      PM
+                    </p>
+                    <p>
+                      <span className="text-gray-400">Sat:</span> 11:00 AM -
+                      5:00 PM
+                    </p>
+                  </div>
+                </div>
+                <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                <div className="flex gap-3 px-8 py-3">
+                  <MapPin color="#000" size={28} />
+                  <p className="font-medium text-xs">
+                    Address: 1234 Street Adress, City Address, 1234
+                  </p>
+                </div>
+                <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                <div className="m-auto mb-3">
+                  <p className="text-sm">
+                    Phones:{" "}
+                    <span className="text-blue-600">(00) 1234 5678</span>
+                  </p>
+                  <p className="text-sm">
+                    E-mail:{" "}
+                    <span className="text-blue-600">shop@email.com</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="h-full flex items-center">
           <div className="max-w-20 h-6 border-b-2 border-white text-center items-center justify-center">
@@ -35,7 +88,7 @@ function Header() {
         </div>
       </div>
       {/*header bottom*/}
-      <div className="flex justify-between items-center bg-blue-600 w-full px-4 h-16">
+      <div className="flex justify-around items-center bg-blue-600 w-full px-3 h-16">
         <div className=" flex items-center">
           <button>
             <TextAlignJustify size={28} color="#fff" />
