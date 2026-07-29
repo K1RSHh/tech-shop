@@ -29,194 +29,308 @@ function Header() {
 
   return (
     <div>
-      <div className="relative w-full flex justify-between bg-black h-11 px-4">
-        <div>
-          <div className="w-16 h-12 mt-2 bg-blue-600 rounded-tl-full rounded-tr-full">
-            <Link to="/" className="flex justify-center pt-2">
-              <img src="/Header/Icon.svg" alt="Logo" className="w-6" />
-            </Link>
+      {/*header phone and table*/}
+      <div className="block lg:hidden">
+        <div className="relative w-full flex justify-between bg-black h-11 px-4">
+          <div>
+            <div className="w-16 h-12 mt-2 bg-blue-600 rounded-tl-full rounded-tr-full">
+              <Link to="/" className="flex justify-center pt-2">
+                <img src="/Header/Icon.svg" alt="Logo" className="w-6" />
+              </Link>
+            </div>
           </div>
-        </div>
-        <div ref={shopInfoRef} className="m-auto relative">
-          <button
-            onClick={() => setShopInfoOpen(!shopInfoOpen)}
-            className="flex"
-          >
-            <p className="text-xs font-poppins font-semibold max-w-44">
-              <span className="text-gray-400">Mon-Thu:</span>{" "}
-              <span className="text-white ">9:00 AM - 5:30 PM</span>
-            </p>
-            <ChevronDown
-              color="#fff"
-              size={17}
-              className={`${shopInfoOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-          <AnimatePresence>
-            {shopInfoOpen ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed left-1/2 top-9 z-50 w-full max-w-80 -translate-x-1/2 bg-white shadow-xl"
-              >
-                <div className="flex flex-col">
-                  <div className="flex gap-3 font-semibold px-8 py-3">
-                    <Clock color="#000" />
-                    <div className="flex flex-col gap-2">
-                      <p className="text-xs">We are open:</p>
+          <div ref={shopInfoRef} className="m-auto relative">
+            <button
+              onClick={() => setShopInfoOpen(!shopInfoOpen)}
+              className="flex"
+            >
+              <p className="text-xs font-poppins font-semibold max-w-44">
+                <span className="text-gray-400">Mon-Thu:</span>{" "}
+                <span className="text-white ">9:00 AM - 5:30 PM</span>
+              </p>
+              <ChevronDown
+                color="#fff"
+                size={17}
+                className={`${shopInfoOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            <AnimatePresence>
+              {shopInfoOpen ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed left-1/2 top-9 z-50 w-full max-w-80 -translate-x-1/2 bg-white shadow-xl"
+                >
+                  <div className="flex flex-col">
+                    <div className="flex gap-3 font-semibold px-8 py-3">
+                      <Clock color="#000" />
+                      <div className="flex flex-col gap-2">
+                        <p className="text-xs text-black">We are open:</p>
+                        <p className="text-sm text-black">
+                          <span className="text-gray-400">Mon-Thu:</span> 9:00
+                          AM - 5:30 PM
+                        </p>
+                        <p className="text-black text-sm">
+                          <span className="text-gray-400">Fr:</span> 9:00 AM -
+                          6:00 PM
+                        </p>
+                        <p className="text-black text-sm">
+                          <span className="text-gray-400">Sat:</span> 11:00 AM -
+                          5:00 PM
+                        </p>
+                      </div>
+                    </div>
+                    <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                    <div className="flex gap-3 px-8 py-3">
+                      <MapPin color="#000" size={28} />
+                      <p className="font-medium text-xs">
+                        Address: 1234 Street Adress, City Address, 1234
+                      </p>
+                    </div>
+                    <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                    <div className="m-auto mb-3">
                       <p className="text-sm">
-                        <span className="text-gray-400">Mon-Thu:</span> 9:00 AM
-                        - 5:30 PM
+                        Phones:{" "}
+                        <span className="text-blue-600">(00) 1234 5678</span>
                       </p>
-                      <p>
-                        <span className="text-gray-400">Fr:</span> 9:00 AM -
-                        6:00 PM
-                      </p>
-                      <p>
-                        <span className="text-gray-400">Sat:</span> 11:00 AM -
-                        5:00 PM
+                      <p className="text-sm">
+                        E-mail:{" "}
+                        <span className="text-blue-600">shop@email.com</span>
                       </p>
                     </div>
                   </div>
-                  <span className="h-0.5 w-full bg-gray-300 my-2"></span>
-                  <div className="flex gap-3 px-8 py-3">
-                    <MapPin color="#000" size={28} />
-                    <p className="font-medium text-xs">
-                      Address: 1234 Street Adress, City Address, 1234
-                    </p>
-                  </div>
-                  <span className="h-0.5 w-full bg-gray-300 my-2"></span>
-                  <div className="m-auto mb-3">
-                    <p className="text-sm">
-                      Phones:{" "}
-                      <span className="text-blue-600">(00) 1234 5678</span>
-                    </p>
-                    <p className="text-sm">
-                      E-mail:{" "}
-                      <span className="text-blue-600">shop@email.com</span>
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              ""
-            )}
-          </AnimatePresence>
-        </div>
-        <div className="h-full flex items-center">
-          <div className="max-w-20 h-6 border-b-2 border-white text-center items-center justify-center">
-            <button className="text-white font-semibold text-xs">
-              Contact Us
-            </button>
+                </motion.div>
+              ) : (
+                ""
+              )}
+            </AnimatePresence>
           </div>
-        </div>
-      </div>
-      {/*header bottom*/}
-      <div className="flex justify-around items-center bg-blue-600 w-full px-3 h-16">
-        <div className=" flex items-center">
-          <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
-            <TextAlignJustify size={28} color="#fff" />
-          </button>
-        </div>
-        <div className="flex items-center p-3 max-h-10 max-w-65 md:w-lg md:max-w-lg bg-white gap-2 rounded-3xl">
-          <Search size={25} color="#CACDD8" />
-          <input
-            type="text"
-            placeholder="Search here"
-            className="placeholder-gray-300 max-w-50 md:max-w-md md:w-100 font-normal text-black focus:outline-none"
-          />
-        </div>
-        <div>
-          <button>
-            <ShoppingCart size={28} />
-          </button>
-        </div>
-        <div className="relative" ref={accountRef}>
-          <button onClick={() => SetAccountOpen(!accountOpen)}>
-            <CircleUserRound size={28} />
-          </button>
-          <AnimatePresence>
-            {accountOpen ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="bg-white right-2  fixed w-full max-w-45 shadow-xl"
-              >
-                <div className="flex flex-col gap-2 text-sm font-medium p-4">
-                  <p className="w-40">My Account</p>
-                  <p className="w-40">My Wish List (0)</p>
-                  <p className="w-40">Compare (0)</p>
-                  <p className="w-40">Create an Account</p>
-                  <p className="w-40">Sign In</p>
-                </div>
-              </motion.div>
-            ) : (
-              ""
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-      <AnimatePresence>
-        {sideBarsOpen ? (
-          <motion.div
-            ref={sideBarRef}
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
-          >
-            <div className="flex justify-between items-center">
-              <img src="/public/Header/IconSideBar.svg" alt="IconSideBar" />
-              <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
-                <X color="#000" />
+          <div className="h-full flex items-center">
+            <div className="max-w-20 h-6 border-b-2 border-white text-center items-center justify-center">
+              <button className="text-white font-semibold text-xs">
+                Contact Us
               </button>
             </div>
-            <span className="flex h-0.5 w-full bg-gray-300 my-5"></span>
-            <div className="flex flex-col gap-4">
-              <Link to="/" className="flex justify-between items-center">
-                <p>Laptops</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>Desktop PCs</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>Networking Devices</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>Printers & Scanners</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>PC Parts</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>All Other Products</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
-              <Link to="/" className="flex justify-between items-center">
-                <p>Repairs</p>
-                <ChevronRight color="#000" size={15} />
-              </Link>
+          </div>
+        </div>
+        {/*header bottom*/}
+        <div className="flex justify-around items-center bg-blue-600 w-full px-3 h-16">
+          <div className=" flex items-center">
+            <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
+              <TextAlignJustify size={28} color="#fff" />
+            </button>
+          </div>
+          <div className="flex items-center p-3 max-h-10 max-w-65 md:w-lg md:max-w-lg bg-white gap-2 rounded-3xl">
+            <Search size={25} color="#CACDD8" />
+            <input
+              type="text"
+              placeholder="Search here"
+              className="placeholder-gray-300 max-w-50 md:max-w-md md:w-100 font-normal text-black focus:outline-none"
+            />
+          </div>
+          <div>
+            <button>
+              <ShoppingCart size={28} />
+            </button>
+          </div>
+          <div className="relative" ref={accountRef}>
+            <button onClick={() => SetAccountOpen(!accountOpen)}>
+              <CircleUserRound size={28} />
+            </button>
+            <AnimatePresence>
+              {accountOpen ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="bg-white right-2  fixed w-full max-w-45 shadow-xl"
+                >
+                  <div className="flex flex-col gap-2 text-sm font-medium p-4">
+                    <p className="w-40">My Account</p>
+                    <p className="w-40">My Wish List (0)</p>
+                    <p className="w-40">Compare (0)</p>
+                    <p className="w-40">Create an Account</p>
+                    <p className="w-40">Sign In</p>
+                  </div>
+                </motion.div>
+              ) : (
+                ""
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+        <AnimatePresence>
+          {sideBarsOpen ? (
+            <motion.div
+              ref={sideBarRef}
+              initial={{ opacity: 0, x: "-100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
+            >
+              <div className="flex justify-between items-center">
+                <img src="/public/Header/IconSideBar.svg" alt="IconSideBar" />
+                <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
+                  <X color="#000" />
+                </button>
+              </div>
+              <span className="flex h-0.5 w-full bg-gray-300 my-5"></span>
+              <div className="flex flex-col gap-4">
+                <Link to="/" className="flex justify-between items-center">
+                  <p>Laptops</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>Desktop PCs</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>Networking Devices</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>Printers & Scanners</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>PC Parts</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>All Other Products</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+                <Link to="/" className="flex justify-between items-center">
+                  <p>Repairs</p>
+                  <ChevronRight color="#000" size={15} />
+                </Link>
+              </div>
+              <motion.button whileTap={{ scale: 0.9 }}>
+                <Link
+                  to="/"
+                  className="inline-block font-semibold text-blue-600 mt-5 border-3 border-blue-600 px-12 py-2.5 rounded-3xl"
+                >
+                  Our Deals
+                </Link>
+              </motion.button>
+            </motion.div>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
+      </div>
+      {/*Header for desktop*/}
+      <AnimatePresence>
+        <div className="hidden lg:block">
+          {/*header top*/}
+          <div className="w-full bg-black h-11">
+            <div className="max-w-350 h-full flex justify-between items-center m-auto">
+              <div ref={shopInfoRef} className="relative">
+                <button
+                  onClick={() => setShopInfoOpen(!shopInfoOpen)}
+                  className="flex cursor-pointer"
+                >
+                  <p className="text-xs font-poppins font-semibold max-w-44">
+                    <span className="text-gray-400">Mon-Thu:</span>{" "}
+                    <span className="text-white ">9:00 AM - 5:30 PM</span>
+                  </p>
+                  <ChevronDown
+                    color="#fff"
+                    size={17}
+                    className={`${shopInfoOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {shopInfoOpen ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed  top-9 z-50 w-full max-w-80 bg-white shadow-xl"
+                    >
+                      <div className="flex flex-col">
+                        <div className="flex gap-3 font-semibold px-8 py-3">
+                          <Clock color="#000" />
+                          <div className="flex flex-col gap-2">
+                            <p className="text-xs text-black">We are open:</p>
+                            <p className="text-sm text-black">
+                              <span className="text-gray-400">Mon-Thu:</span>{" "}
+                              9:00 AM - 5:30 PM
+                            </p>
+                            <p className="text-black text-sm">
+                              <span className="text-gray-400">Fr:</span> 9:00 AM
+                              - 6:00 PM
+                            </p>
+                            <p className="text-black text-sm">
+                              <span className="text-gray-400">Sat:</span> 11:00
+                              AM - 5:00 PM
+                            </p>
+                          </div>
+                        </div>
+                        <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                        <div className="flex gap-3 px-8 py-3">
+                          <MapPin color="#000" size={28} />
+                          <p className="font-medium text-xs text-black">
+                            Address: 1234 Street Adress, City Address, 1234
+                          </p>
+                        </div>
+                        <span className="h-0.5 w-full bg-gray-300 my-2"></span>
+                        <div className="m-auto mb-3">
+                          <p className="text-sm text-black">
+                            Phones:{" "}
+                            <span className="text-blue-600">
+                              (00) 1234 5678
+                            </span>
+                          </p>
+                          <p className="text-sm text-black">
+                            E-mail:{" "}
+                            <span className="text-blue-600">
+                              shop@email.com
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    ""
+                  )}
+                </AnimatePresence>
+              </div>
+              <div className="">
+                <p className="text-neutral-400 text-xs font-semibold">
+                  Visit our showroom in 1234 Street Adress City Address, 1234{" "}
+                  <button className="text-white cursor-pointer border-b-2">
+                    Contact Us
+                  </button>
+                </p>
+              </div>
+              <div className="flex gap-3.5">
+                <button className="cursor-pointer text-xs font-semibold">
+                  <p>Call Us: (00) 1234 5678</p>
+                </button>
+                <div className="flex gap-2">
+                  <button className="cursor-pointer w-5">
+                    <img
+                      src="/Header/facebook.svg"
+                      alt="facebook"
+                      className="text-white w-6"
+                    />
+                  </button>
+                  <button className="cursor-pointer w-5">
+                    <img
+                      src="/Header/instagram.svg"
+                      alt="facebook"
+                      className="text-white w-6"
+                    />
+                  </button>
+                </div>
+              </div>
             </div>
-            <motion.button whileTap={{ scale: 0.9 }}>
-              <Link
-                to="/"
-                className="inline-block font-semibold text-blue-600 mt-5 border-3 border-blue-600 px-12 py-2.5 rounded-3xl"
-              >
-                Our Deals
-              </Link>
-            </motion.button>
-          </motion.div>
-        ) : (
-          ""
-        )}
+          </div>
+          {/*header bottom*/}
+        </div>
       </AnimatePresence>
     </div>
   );
