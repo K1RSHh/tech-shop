@@ -272,13 +272,13 @@ function Header() {
                         <span className="h-0.5 w-full bg-gray-300 my-2"></span>
                         <div className="flex gap-3 px-8 py-3">
                           <MapPin color="#000" size={28} />
-                          <p className="font-medium text-xs text-black">
+                          <p className="text-stone-950 font-medium text-xs ">
                             Address: 1234 Street Adress, City Address, 1234
                           </p>
                         </div>
                         <span className="h-0.5 w-full bg-gray-300 my-2"></span>
                         <div className="m-auto mb-3">
-                          <p className="text-sm text-black">
+                          <p className="text-sm">
                             Phones:{" "}
                             <span className="text-blue-600">
                               (00) 1234 5678
