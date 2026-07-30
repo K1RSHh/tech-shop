@@ -171,7 +171,7 @@ function Header() {
               className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
             >
               <div className="flex justify-between items-center">
-                <img src="/public/Header/IconSideBar.svg" alt="IconSideBar" />
+                <img src="/Header/IconSideBar.svg" alt="IconSideBar" />
                 <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
                   <X color="#000" />
                 </button>
