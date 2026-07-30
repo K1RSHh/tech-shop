@@ -144,7 +144,7 @@ function Header() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="bg-white right-2  fixed w-full max-w-45 shadow-xl"
+                  className="bg-white right-2  fixed w-full max-w-45 shadow-xl z-50"
                 >
                   <div className="flex flex-col gap-2 text-sm font-medium p-4">
                     <p className="w-40">My Account</p>
