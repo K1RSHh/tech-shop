@@ -30,7 +30,7 @@ function Header() {
   return (
     <div>
       {/*header phone and table*/}
-      <div className="block lg:hidden">
+      <div className="block xl:hidden">
         <div className="relative w-full flex justify-between bg-black h-11 px-4">
           <div>
             <div className="w-16 h-12 mt-2 bg-blue-600 rounded-tl-full rounded-tr-full">
@@ -223,7 +223,7 @@ function Header() {
       </div>
       {/*Header for desktop*/}
       <AnimatePresence>
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           {/*header top*/}
           <div className="w-full bg-black h-11">
             <div className="max-w-350 h-full flex justify-between items-center m-auto">
@@ -301,35 +301,145 @@ function Header() {
               <div className="">
                 <p className="text-neutral-400 text-xs font-semibold">
                   Visit our showroom in 1234 Street Adress City Address, 1234{" "}
-                  <button className="text-white cursor-pointer border-b-2">
+                  <motion.button
+                    whileHover={{ color: "#005EAD" }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-white cursor-pointer border-b-2"
+                  >
                     Contact Us
-                  </button>
+                  </motion.button>
                 </p>
               </div>
               <div className="flex gap-3.5">
-                <button className="cursor-pointer text-xs font-semibold">
+                <motion.button
+                  whileHover={{ color: "#005EAD" }}
+                  whileTap={{ scale: 0.9 }}
+                  className="cursor-pointer text-xs font-semibold"
+                >
                   <p>Call Us: (00) 1234 5678</p>
-                </button>
+                </motion.button>
                 <div className="flex gap-2">
-                  <button className="cursor-pointer w-5">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="cursor-pointer w-5"
+                  >
                     <img
                       src="/Header/facebook.svg"
                       alt="facebook"
-                      className="text-white w-6"
+                      className="w-6"
                     />
-                  </button>
-                  <button className="cursor-pointer w-5">
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="cursor-pointer w-5"
+                  >
                     <img
                       src="/Header/instagram.svg"
                       alt="facebook"
                       className="text-white w-6"
                     />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
           </div>
           {/*header bottom*/}
+          <div className="flex max-w-350 w-full h-23 m-auto pl-6 items-center">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Link to="/" className="cursor-pointer inline-block">
+                <img
+                  src="Header/IconSideBar.svg"
+                  alt="Logo"
+                  className="w-8 h-10"
+                />
+              </Link>
+            </motion.button>
+            {/*button block*/}
+            <div className="flex justify-start items-center w-full gap-6 ml-14 text-black text-sm font-semibold">
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Laptops</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Desktop PCs</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Networking Devices</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Printers & Scanners</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">PC Parts</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">All Other Products</Link>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, color: "#2563EB" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Repairs</Link>
+              </motion.button>
+              <motion.button
+                className="border-2 cursor-pointer border-blue-600 rounded-3xl px-6.5 py-2 text-blue-600"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link to="/">Our Deals</Link>
+              </motion.button>
+            </div>
+            <div className="flex gap-6">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer"
+              >
+                <Search size={25} color="#000" />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer"
+              >
+                <ShoppingCart size={25} color="#000" />
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center cursor-pointer bg-neutral-800"
+              >
+                <img
+                  src="Header/user_photo.png"
+                  alt="user_photo"
+                  className="w-full h-full object-cover"
+                />
+              </motion.button>
+            </div>
+          </div>
         </div>
       </AnimatePresence>
     </div>
