@@ -121,12 +121,12 @@ function Header() {
               <TextAlignJustify size={28} color="#fff" />
             </button>
           </div>
-          <div className="flex items-center p-3 max-h-10 max-w-65 md:w-lg md:max-w-lg bg-white gap-2 rounded-3xl">
+          <div className="flex items-center p-3 max-h-10 max-w-60 md:w-lg md:max-w-lg bg-white gap-2 rounded-3xl">
             <Search size={25} color="#CACDD8" />
             <input
               type="text"
               placeholder="Search here"
-              className="placeholder-gray-300 max-w-50 md:max-w-md md:w-100 font-normal text-black focus:outline-none"
+              className="placeholder-gray-300 max-w-40 md:max-w-md md:w-100 font-normal text-black focus:outline-none"
             />
           </div>
           <div>
