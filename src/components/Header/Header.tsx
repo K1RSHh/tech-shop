@@ -299,7 +299,7 @@ function Header() {
                 </AnimatePresence>
               </div>
               <div className="">
-                <p className="text-neutral-400 text-xs font-semibold">
+                <span className="text-neutral-400 text-xs font-semibold">
                   Visit our showroom in 1234 Street Adress City Address, 1234{" "}
                   <motion.button
                     whileHover={{ color: "#005EAD" }}
@@ -308,7 +308,7 @@ function Header() {
                   >
                     Contact Us
                   </motion.button>
-                </p>
+                </span>
               </div>
               <div className="flex gap-3.5">
                 <motion.button
