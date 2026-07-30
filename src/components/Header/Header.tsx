@@ -316,7 +316,7 @@ function Header() {
                   whileTap={{ scale: 0.9 }}
                   className="cursor-pointer text-xs font-semibold"
                 >
-                  <p>Call Us: (00) 1234 5678</p>
+                  <span>Call Us: (00) 1234 5678</span>
                 </motion.button>
                 <div className="flex gap-2">
                   <motion.button
