@@ -442,6 +442,7 @@ function Header() {
           </div>
         </div>
       </AnimatePresence>
+      <span className="flex h-0.5 w-full bg-gray-300"></span>
     </div>
   );
 }
