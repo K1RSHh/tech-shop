@@ -20,12 +20,18 @@ function Header() {
   const [sideBarsOpen, setSideBarsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const shopInfoRef = useRef<HTMLDivElement>(null);
-  const accountRef = useRef<HTMLDivElement>(null);
+  const shopInfoRefMobile = useRef<HTMLDivElement>(null);
+  const shopInfoRefDesktop = useRef<HTMLDivElement>(null);
+  const accountRefMobile = useRef<HTMLDivElement>(null);
+  const accountRefDesktop = useRef<HTMLDivElement>(null);
   const sideBarRef = useRef<HTMLDivElement>(null);
 
-  useOnClickOutside(shopInfoRef, () => setShopInfoOpen(false));
-  useOnClickOutside(accountRef, () => SetAccountOpen(false));
+  useOnClickOutside([shopInfoRefMobile, shopInfoRefDesktop], () =>
+    setShopInfoOpen(false),
+  );
+  useOnClickOutside([accountRefMobile, accountRefDesktop], () =>
+    SetAccountOpen(false),
+  );
   useOnClickOutside(sideBarRef, () => setSideBarsOpen(false));
 
   return (
@@ -40,7 +46,7 @@ function Header() {
               </Link>
             </div>
           </div>
-          <div ref={shopInfoRef} className="m-auto relative">
+          <div ref={shopInfoRefMobile} className="m-auto relative">
             <button
               onClick={() => setShopInfoOpen(!shopInfoOpen)}
               className="flex"
@@ -136,7 +142,7 @@ function Header() {
                 <ShoppingCart size={28} />
               </button>
             </div>
-            <div className="relative" ref={accountRef}>
+            <div className="relative" ref={accountRefMobile}>
               <button onClick={() => SetAccountOpen(!accountOpen)}>
                 <CircleUserRound size={28} />
               </button>
@@ -170,7 +176,7 @@ function Header() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "-100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
+                className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white left-0 top-0 z-50"
               >
                 <div className="flex justify-between items-center">
                   <img src="/Header/IconSideBar.svg" alt="IconSideBar" />
@@ -230,7 +236,7 @@ function Header() {
           {/*header top*/}
           <div className="w-full bg-black h-11">
             <div className="max-w-350 h-full flex justify-between items-center m-auto">
-              <div ref={shopInfoRef} className="relative">
+              <div ref={shopInfoRefDesktop} className="relative">
                 <button
                   onClick={() => setShopInfoOpen(!shopInfoOpen)}
                   className="flex cursor-pointer"
@@ -450,7 +456,7 @@ function Header() {
               >
                 <ShoppingCart size={25} color="#000" />
               </motion.button>
-              <div className="relative" ref={accountRef}>
+              <div className="relative" ref={accountRefDesktop}>
                 <motion.button
                   onClick={() => SetAccountOpen(!accountOpen)}
                   whileHover={{ scale: 1.1 }}
