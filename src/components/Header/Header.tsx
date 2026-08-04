@@ -146,7 +146,7 @@ function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="bg-white right-2  fixed w-full max-w-45 shadow-xl z-50"
+                    className="bg-white right-2 fixed w-full max-w-45 shadow-xl z-50"
                   >
                     <div className="flex flex-col gap-2 text-sm font-medium p-4">
                       <p className="w-40">My Account</p>
@@ -423,7 +423,7 @@ function Header() {
                 </motion.button>
               </div>
             )}
-            <div className="flex gap-6">
+            <div className="flex relative gap-6">
               {searchOpen ? (
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -450,18 +450,48 @@ function Header() {
               >
                 <ShoppingCart size={25} color="#000" />
               </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center cursor-pointer bg-neutral-800"
-              >
-                <img
-                  src="Header/user_photo.png"
-                  alt="user_photo"
-                  className="w-full h-full object-cover"
-                />
-              </motion.button>
+              <div className="relative" ref={accountRef}>
+                <motion.button
+                  onClick={() => SetAccountOpen(!accountOpen)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center cursor-pointer bg-neutral-800"
+                >
+                  <img
+                    src="Header/user_photo.png"
+                    alt="user_photo"
+                    className="w-full h-full object-cover"
+                  />
+                </motion.button>
+                <AnimatePresence>
+                  {accountOpen ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="bg-white absolute right-0 top-10  shadow-xl z-50"
+                    >
+                      <div className="flex flex-col gap-2 text-sm font-medium p-4 text-black">
+                        <button className="w-40 cursor-pointer">
+                          My Account
+                        </button>
+                        <button className="w-40 cursor-pointer">
+                          My Wish List (0)
+                        </button>
+                        <button className="w-40 cursor-pointer">
+                          Compare (0)
+                        </button>
+                        <button className="w-40 cursor-pointer">
+                          Create an Account
+                        </button>
+                        <button className="w-40 cursor-pointer">Sign In</button>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    ""
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
