@@ -18,6 +18,7 @@ function Header() {
   const [shopInfoOpen, setShopInfoOpen] = useState(false);
   const [accountOpen, SetAccountOpen] = useState(false);
   const [sideBarsOpen, setSideBarsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const shopInfoRef = useRef<HTMLDivElement>(null);
   const accountRef = useRef<HTMLDivElement>(null);
@@ -115,13 +116,13 @@ function Header() {
           </div>
         </div>
         {/*header bottom*/}
-        <div className="flex justify-around items-center bg-blue-600 w-full px-3 h-16">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center  bg-blue-600 w-full px-3 h-16">
           <div className=" flex items-center">
             <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
               <TextAlignJustify size={28} color="#fff" />
             </button>
           </div>
-          <div className="flex items-center p-3 max-h-10 max-w-60 md:w-lg md:max-w-lg bg-white gap-2 rounded-3xl">
+          <div className="flex items-center p-3 max-h-10 mx-3 md:mx-10 bg-white gap-2 rounded-3xl">
             <Search size={25} color="#CACDD8" />
             <input
               type="text"
@@ -129,97 +130,99 @@ function Header() {
               className="placeholder-gray-300 max-w-40 md:max-w-md md:w-100 font-normal text-black focus:outline-none"
             />
           </div>
-          <div>
-            <button>
-              <ShoppingCart size={28} />
-            </button>
+          <div className="flex gap-5">
+            <div>
+              <button>
+                <ShoppingCart size={28} />
+              </button>
+            </div>
+            <div className="relative" ref={accountRef}>
+              <button onClick={() => SetAccountOpen(!accountOpen)}>
+                <CircleUserRound size={28} />
+              </button>
+              <AnimatePresence>
+                {accountOpen ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="bg-white right-2  fixed w-full max-w-45 shadow-xl z-50"
+                  >
+                    <div className="flex flex-col gap-2 text-sm font-medium p-4">
+                      <p className="w-40">My Account</p>
+                      <p className="w-40">My Wish List (0)</p>
+                      <p className="w-40">Compare (0)</p>
+                      <p className="w-40">Create an Account</p>
+                      <p className="w-40">Sign In</p>
+                    </div>
+                  </motion.div>
+                ) : (
+                  ""
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-          <div className="relative" ref={accountRef}>
-            <button onClick={() => SetAccountOpen(!accountOpen)}>
-              <CircleUserRound size={28} />
-            </button>
-            <AnimatePresence>
-              {accountOpen ? (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="bg-white right-2  fixed w-full max-w-45 shadow-xl z-50"
-                >
-                  <div className="flex flex-col gap-2 text-sm font-medium p-4">
-                    <p className="w-40">My Account</p>
-                    <p className="w-40">My Wish List (0)</p>
-                    <p className="w-40">Compare (0)</p>
-                    <p className="w-40">Create an Account</p>
-                    <p className="w-40">Sign In</p>
-                  </div>
-                </motion.div>
-              ) : (
-                ""
-              )}
-            </AnimatePresence>
-          </div>
+          <AnimatePresence>
+            {sideBarsOpen ? (
+              <motion.div
+                ref={sideBarRef}
+                initial={{ opacity: 0, x: "-100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: "-100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
+              >
+                <div className="flex justify-between items-center">
+                  <img src="/Header/IconSideBar.svg" alt="IconSideBar" />
+                  <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
+                    <X color="#000" />
+                  </button>
+                </div>
+                <span className="flex h-0.5 w-full bg-gray-300 my-5"></span>
+                <div className="flex flex-col gap-4">
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>Laptops</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>Desktop PCs</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>Networking Devices</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>Printers & Scanners</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>PC Parts</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>All Other Products</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                  <Link to="/" className="flex justify-between items-center">
+                    <p>Repairs</p>
+                    <ChevronRight color="#000" size={15} />
+                  </Link>
+                </div>
+                <motion.button whileTap={{ scale: 0.9 }}>
+                  <Link
+                    to="/"
+                    className="inline-block font-semibold text-blue-600 mt-5 border-3 border-blue-600 px-12 py-2.5 rounded-3xl"
+                  >
+                    Our Deals
+                  </Link>
+                </motion.button>
+              </motion.div>
+            ) : (
+              ""
+            )}
+          </AnimatePresence>
         </div>
-        <AnimatePresence>
-          {sideBarsOpen ? (
-            <motion.div
-              ref={sideBarRef}
-              initial={{ opacity: 0, x: "-100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "-100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white top-0 z-50"
-            >
-              <div className="flex justify-between items-center">
-                <img src="/Header/IconSideBar.svg" alt="IconSideBar" />
-                <button onClick={() => setSideBarsOpen(!sideBarsOpen)}>
-                  <X color="#000" />
-                </button>
-              </div>
-              <span className="flex h-0.5 w-full bg-gray-300 my-5"></span>
-              <div className="flex flex-col gap-4">
-                <Link to="/" className="flex justify-between items-center">
-                  <p>Laptops</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>Desktop PCs</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>Networking Devices</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>Printers & Scanners</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>PC Parts</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>All Other Products</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-                <Link to="/" className="flex justify-between items-center">
-                  <p>Repairs</p>
-                  <ChevronRight color="#000" size={15} />
-                </Link>
-              </div>
-              <motion.button whileTap={{ scale: 0.9 }}>
-                <Link
-                  to="/"
-                  className="inline-block font-semibold text-blue-600 mt-5 border-3 border-blue-600 px-12 py-2.5 rounded-3xl"
-                >
-                  Our Deals
-                </Link>
-              </motion.button>
-            </motion.div>
-          ) : (
-            ""
-          )}
-        </AnimatePresence>
       </div>
       {/*Header for desktop*/}
       <AnimatePresence>
@@ -349,7 +352,7 @@ function Header() {
           <div className="flex max-w-350 w-full h-23 m-auto pl-6 items-center">
             <motion.button
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Link to="/" className="cursor-pointer inline-block">
                 <img
@@ -360,65 +363,86 @@ function Header() {
               </Link>
             </motion.button>
             {/*button block*/}
-            <div className="flex justify-start items-center w-full gap-6 ml-14 text-black text-sm font-semibold">
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Laptops</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Desktop PCs</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Networking Devices</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Printers & Scanners</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">PC Parts</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">All Other Products</Link>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, color: "#2563EB" }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Repairs</Link>
-              </motion.button>
-              <motion.button
-                className="border-2 cursor-pointer border-blue-600 rounded-3xl px-6.5 py-2 text-blue-600"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link to="/">Our Deals</Link>
-              </motion.button>
-            </div>
+            {searchOpen ? (
+              <div className="w-full flex items-center bg-blue-50 h-14 rounded-4xl mx-10">
+                <input className="w-full ml-3 h-8 text-black text-lg focus:outline-none"></input>
+                <div className="mr-5">
+                  <Search size={25} color="#000" />
+                </div>
+              </div>
+            ) : (
+              <div className="flex justify-start items-center w-full gap-6 ml-14 text-black text-sm font-semibold">
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">Laptops</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">Desktop PCs</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">Networking Devices</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">Printers & Scanners</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">PC Parts</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">All Other Products</Link>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05, color: "#2563EB" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/">Repairs</Link>
+                </motion.button>
+                <motion.button
+                  className="border-2 cursor-pointer border-blue-600 rounded-3xl px-6.5 py-2 text-blue-600"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link to="/">Our Deals</Link>
+                </motion.button>
+              </div>
+            )}
             <div className="flex gap-6">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
-              >
-                <Search size={25} color="#000" />
-              </motion.button>
+              {searchOpen ? (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="cursor-pointer"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                >
+                  <X size={25} color="#0156FF" />
+                </motion.button>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="cursor-pointer"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                >
+                  <Search size={25} color="#000" />
+                </motion.button>
+              )}
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
