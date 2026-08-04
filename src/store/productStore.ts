@@ -2,10 +2,10 @@ import { db } from "../firebase";
 import {
   collection,
   getDocs,
-  addDoc,
-  deleteDoc,
-  doc,
-  updateDoc,
+  // addDoc,
+  // deleteDoc,
+  // doc,
+  // updateDoc,
 } from "firebase/firestore";
 import { create } from "zustand";
 import type { Product } from "../types/product";
