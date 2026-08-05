@@ -26,7 +26,6 @@ export const productStore = create<PProductStore>(() => ({
     const productCollection = collection(db, COLLECTION_NAME);
 
     const snapshot = await getDocs(productCollection);
-
     return (await snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),

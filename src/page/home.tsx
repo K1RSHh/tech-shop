@@ -1,4 +1,5 @@
 import ImageSlider from "../components/Slider/ImageSlider";
+import { NewProducts } from "../components/Home/NewProducts/NewProducts";
 
 function Home() {
   const myImages = [
@@ -21,9 +22,11 @@ function Home() {
       alt: "Slide 3",
     },
   ];
+
   return (
     <div>
       <ImageSlider slides={myImages} />
+      <NewProducts />
     </div>
   );
 }
