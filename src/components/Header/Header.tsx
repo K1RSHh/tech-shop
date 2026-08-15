@@ -168,6 +168,7 @@ function Header() {
               </AnimatePresence>
             </div>
           </div>
+          {/* side bars*/}
           <AnimatePresence>
             {sideBarsOpen ? (
               <motion.div
@@ -176,7 +177,7 @@ function Header() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "-100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="absolute w-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white left-0 top-0 z-50"
+                className="absolute w-full h-full max-w-2xs md:max-w-96 py-6 pl-6 pr-4 bg-white left-0 top-0 z-50"
               >
                 <div className="flex justify-between items-center">
                   <img src="/Header/IconSideBar.svg" alt="IconSideBar" />

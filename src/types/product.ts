@@ -12,13 +12,15 @@ export interface Product {
   id: string;
   title: string;
   price: number;
-  oldPrice: number;
+  brand?: string;
+  series?: string;
+  oldPrice?: number;
   image: string;
   gallery: string[];
-  category: "custom-builds" | "laptop" | "desktops" | "monitors";
-  inStock: boolean;
-  reviewsCount: number;
-  rating: number;
-  description: string;
+  category: "Custom Desktop" | "Laptop" | "Desktops" | "Monitors";
+  inStock?: boolean;
+  reviewsCount?: number;
+  rating?: number;
+  description?: string;
   specs?: ProductSpecs;
 }

@@ -57,8 +57,8 @@ export const NewProducts = () => {
 
   return (
     <section className="py-9 px-3.5 max-w-350 m-auto text-white">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
+      <div className="container mx-auto">
+        <div className="flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-black ">New Products</h2>
           <a
             href="/catalog?sort=newest"
@@ -68,8 +68,8 @@ export const NewProducts = () => {
           </a>
         </div>
 
-        <div className="flex items-center justify-between mb-6">
-          {/* <div className="flex gap-2">
+        {/* <div className="flex items-center justify-between mb-6">
+          <div className="flex gap-2">
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={scrollPrev}
@@ -86,8 +86,8 @@ export const NewProducts = () => {
             >
               ❯
             </motion.button>
-          </div> */}
-        </div>
+          </div>
+        </div> */}
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex -ml-4 justify-between">

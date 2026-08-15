@@ -24,13 +24,13 @@ export default function ImageSlider({ slides }: ImageSliderProps) {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full mt-4 lg:mt-0 max-w-7xl mx-auto px-4 md:px-8 group">
+    <div className="relative w-full mt-4 lg:mt-0 max-w-350 mx-auto px-4 xl:px-0 group">
       <div className="overflow-hidden shadow-2xl bg-neutral-900" ref={emblaRef}>
         <div className="flex">
           {slides.map((item, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 relative h-24 sm:h-80 md:h-[173px] xl:h-[328px]"
+              className="flex-[0_0_100%] min-w-0 relative h-24 sm:h-80 md:h-43.5 xl:h-82"
             >
               <img
                 src={item.large}
@@ -47,7 +47,7 @@ export default function ImageSlider({ slides }: ImageSliderProps) {
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={scrollPrev}
-        className="absolute left-5 md:left-10 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-full cursor-pointer z-10 transition-all "
+        className="absolute left-5 md:left-5 top-1/2 -translate-y-1/2 bg-black/90 hover:bg-black/99  text-white p-2.5 sm:p-3 rounded-full cursor-pointer z-10 transition-all "
         aria-label="Previous slide"
       >
         <ChevronLeft size={24} className="text-white" />
@@ -56,7 +56,7 @@ export default function ImageSlider({ slides }: ImageSliderProps) {
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={scrollNext}
-        className="absolute right-5 md:right-10 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-full cursor-pointer z-10 transition-all "
+        className="absolute right-5 md:right-5 top-1/2 -translate-y-1/2 bg-black/90 hover:bg-black/99  text-white p-2.5 sm:p-3 rounded-full cursor-pointer z-10 transition-all "
         aria-label="Next slide"
       >
         <ChevronRight size={24} className="text-white" />

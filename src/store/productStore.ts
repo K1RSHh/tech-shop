@@ -1,34 +1,27 @@
-import { db } from "../firebase";
-import {
-  collection,
-  getDocs,
-  // addDoc,
-  // deleteDoc,
-  // doc,
-  // updateDoc,
-} from "firebase/firestore";
 import { create } from "zustand";
 import type { Product } from "../types/product";
+import { productService } from "../service/productService";
 
 interface PProductStore {
   products: Product[];
   isLoading: boolean;
-  fetchProducts: () => Promise<Product[]>;
+  fetchProducts: () => Promise<void>;
 }
 
-const COLLECTION_NAME = "products";
-
-export const productStore = create<PProductStore>(() => ({
+export const productStore = create<PProductStore>((set) => ({
   products: [],
   isLoading: false,
 
   fetchProducts: async () => {
-    const productCollection = collection(db, COLLECTION_NAME);
-
-    const snapshot = await getDocs(productCollection);
-    return (await snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }))) as Product[];
+    set({ isLoading: true });
+    try {
+      const data = await productService.getAllProducts();
+      console.log("Fetched data:", data);
+      set({ products: data });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      set({ isLoading: false });
+    }
   },
 }));

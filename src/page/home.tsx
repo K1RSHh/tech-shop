@@ -1,7 +1,18 @@
 import ImageSlider from "../components/Slider/ImageSlider";
 import { NewProducts } from "../components/Home/NewProducts/NewProducts";
+import { productStore } from "../store/productStore";
+import { useEffect } from "react";
+import CategoryElement from "../components/Home/CategoryBlock/CategoryElemrnts";
 
 function Home() {
+  const { fetchProducts, isLoading } = productStore();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  if (isLoading) return <div>Loading,,,,</div>;
+
   const myImages = [
     {
       small: "/Home/slide_mobile.jpg",
@@ -27,6 +38,7 @@ function Home() {
     <div>
       <ImageSlider slides={myImages} />
       <NewProducts />
+      <CategoryElement />
     </div>
   );
 }
