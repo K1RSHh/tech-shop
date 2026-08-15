@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { collection, query, where, limit, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  limit,
+  getDocs,
+  QueryConstraint,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import type { Product } from "../types/product";
 
@@ -29,7 +36,9 @@ export const useTabProducts = (
       try {
         const productsRef = collection(db, "products");
 
-        const constraints = [where("category", "==", category)];
+        const constraints: QueryConstraint[] = [
+          where("category", "==", category),
+        ];
 
         if (activeSeries) {
           constraints.push(where("series", "==", activeSeries));

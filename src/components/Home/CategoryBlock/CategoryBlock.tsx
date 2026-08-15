@@ -2,7 +2,6 @@ import React from "react";
 import { useTabProducts } from "../../../hooks/useTabProducts";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
-// import { useCartStore } from "../../store/useCartStore";
 
 interface CategoryBlockProps {
   title: string;
@@ -27,11 +26,9 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
     loop: false,
   });
 
-  //   const addToCart = useCartStore((state) => state.addToCart);
-
   return (
     <section className="py-8 text-white container max-w-350 m-auto overflow-hidden">
-      {/* Перемикачі табів */}
+      {/* Tab Switches */}
       {seriesList.length > 0 && (
         <div className="flex flex-wrap gap-6 border-b pb-3 mb-6 mx-3">
           {seriesList.map((series) => (
@@ -50,9 +47,9 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
         </div>
       )}
 
-      {/* Контент блоку */}
+      {/* Content Block */}
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 items-start">
-        {/* Банер */}
+        {/* Banner */}
         <div
           className="relative mx-2 h-20 md:h-90 overflow-hidden bg-cover bg-center"
           style={{ backgroundImage: `url(${bannerImage})` }}
@@ -70,7 +67,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
           </div>
         </div>
 
-        {/* Сітка товарів */}
+        {/* Product Grid */}
         {loading ? (
           <div className="h-80 flex items-center justify-center text-gray-500">
             Завантаження...
