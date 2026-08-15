@@ -3,6 +3,7 @@ import { NewProducts } from "../components/Home/NewProducts/NewProducts";
 import { productStore } from "../store/productStore";
 import { useEffect } from "react";
 import CategoryElement from "../components/Home/CategoryBlock/CategoryElemrnts";
+import Banner from "../components/Banner/Banner";
 
 function Home() {
   const { fetchProducts, isLoading } = productStore();
@@ -38,6 +39,7 @@ function Home() {
     <div>
       <ImageSlider slides={myImages} />
       <NewProducts />
+      <Banner />
       <CategoryElement />
     </div>
   );

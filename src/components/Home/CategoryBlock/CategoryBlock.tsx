@@ -70,7 +70,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
         {/* Product Grid */}
         {loading ? (
           <div className="h-80 flex items-center justify-center text-gray-500">
-            Завантаження...
+            Loading...
           </div>
         ) : error ? (
           <div className="h-80 flex items-center justify-center text-red-500">

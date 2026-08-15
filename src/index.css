@@ -4,6 +4,12 @@
   --font-poppins: "Poppins", sans-serif;
 }
 
+@layer base {
+  p {
+    color: black;
+  }
+}
+
 :root {
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -49,5 +55,4 @@ body {
 }
 p {
   margin: 0;
-  color: #000000;
 }

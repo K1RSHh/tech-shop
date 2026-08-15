@@ -59,8 +59,8 @@ export const useTabProducts = (
           [cacheKey]: fetchedData,
         }));
       } catch (err) {
-        console.error(`Помилка завантаження товарів для ${cacheKey}:`, err);
-        setError("Не вдалося отримати товари");
+        console.error(`Error loading products for ${cacheKey}:`, err);
+        setError("Unable to retrieve the items");
       } finally {
         setLoading(false);
       }
