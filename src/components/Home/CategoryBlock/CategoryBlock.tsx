@@ -99,9 +99,9 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
                       </div>
 
                       <div className="mt-2">
-                        <p className="text-base font-bold text-white mb-2">
+                        <span className="text-base font-bold text-black mb-2">
                           ${product.price}
-                        </p>
+                        </span>
                       </div>
                     </Link>
                   </div>
