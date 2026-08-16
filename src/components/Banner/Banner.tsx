@@ -1,6 +1,6 @@
 function Banner() {
   return (
-    <div className="max-w-350 w-full overflow-hidden m-auto">
+    <div className="max-w-350 w-full mb-8 overflow-hidden m-auto">
       <div className="flex flex-col justify-center items-center h-full py-4 md:flex-row gap-3.5 md:gap-0 bg-blue-50 text-black">
         <div className="flex gap-1">
           <img src="/Home/Banner/banner_logo_1.svg" alt="svg_logo_1" />

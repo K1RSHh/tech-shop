@@ -4,6 +4,7 @@ import { db } from "../../../firebase";
 import type { Product } from "../../../types/product";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
+import { Star } from "lucide-react";
 // import { motion } from "motion/react";
 
 export const NewProducts = () => {
@@ -106,6 +107,19 @@ export const NewProducts = () => {
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
+                      </div>
+                      {/* product rating */}
+                      <div className="flex gap-0.5 items-center">
+                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
+                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
+                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
+                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
+                        <Star color="#c4c4c4" fill="#c4c4c4" size={12} />
+                        <div>
+                          <p className="text-sm text-stone-300 pl-1">
+                            Reviews (4)
+                          </p>
+                        </div>
                       </div>
                       <h3 className="text-sm h-14 font-normal text-black line-clamp-1">
                         {product.title}

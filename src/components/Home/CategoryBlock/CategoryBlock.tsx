@@ -2,6 +2,7 @@ import React from "react";
 import { useTabProducts } from "../../../hooks/useTabProducts";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
+import { Star } from "lucide-react";
 
 interface CategoryBlockProps {
   title: string;
@@ -27,7 +28,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
   });
 
   return (
-    <section className="py-8 text-white container max-w-350 m-auto overflow-hidden">
+    <section className="text-white mb-10 container max-w-350 m-auto overflow-hidden">
       {/* Tab Switches */}
       {seriesList.length > 0 && (
         <div className="flex flex-wrap gap-6 border-b pb-3 mb-6 mx-3">
@@ -79,7 +80,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
         ) : (
           <div className="relative group">
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-4">
+              <div className="flex">
                 {products.map((product) => (
                   <div
                     key={product.id}
@@ -92,8 +93,20 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
                           alt={product.title}
                           className="w-40 h-40 md:w-56 md:h-56 m-auto mb-3 pointer-events-none mt-3"
                         />
-
-                        <h4 className="text-xs font-normal mt-1 text-black">
+                        {/* product rating */}
+                        <div className="flex gap-0.5 items-center">
+                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                          <Star color="#c4c4c4" fill="#c4c4c4" size={13} />
+                          <div>
+                            <p className="text-sm text-stone-300 pl-1">
+                              Reviews (4)
+                            </p>
+                          </div>
+                        </div>
+                        <h4 className="text-sm font-normal mt-1 text-black">
                           {product.title}
                         </h4>
                       </div>

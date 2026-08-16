@@ -15,6 +15,16 @@ function CategoryElement() {
         seriesList={["GS Series", "GT Series", "GL Series", "GE Series"]}
         initialSeries="GS Series"
       />
+      <CategoryBlock
+        title="Desktop"
+        category="Desktop"
+        bannerImage="/Home/desktops.jpg"
+      />
+      <CategoryBlock
+        title="Monitors"
+        category="Monitors"
+        bannerImage="/Home/gaming_monitors.jpg"
+      />
     </div>
   );
 }

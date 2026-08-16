@@ -2,7 +2,7 @@ import ImageSlider from "../components/Slider/ImageSlider";
 import { NewProducts } from "../components/Home/NewProducts/NewProducts";
 import { productStore } from "../store/productStore";
 import { useEffect } from "react";
-import CategoryElement from "../components/Home/CategoryBlock/CategoryElemrnts";
+import CategoryElement from "../components/Home/CategoryBlock/CategoryElements";
 import Banner from "../components/Banner/Banner";
 
 function Home() {
