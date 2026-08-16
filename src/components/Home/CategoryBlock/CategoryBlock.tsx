@@ -61,7 +61,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
             </h3>
             <a
               href={`/catalog?category=${category}`}
-              className="relative z-10 text-xs xl:mb-6 text-gray-300 underline hover:text-blue-400"
+              className="relative z-10 text-xs md:mb-6 text-gray-300 underline hover:text-blue-400"
             >
               See All Products
             </a>
