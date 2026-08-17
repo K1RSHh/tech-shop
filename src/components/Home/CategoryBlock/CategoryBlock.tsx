@@ -80,7 +80,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
         ) : (
           <div className="relative group">
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
+              <div className="flex gap-2.5">
                 {products.map((product) => (
                   <div
                     key={product.id}
@@ -88,11 +88,13 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
                   >
                     <Link to="/">
                       <div>
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          className="w-40 h-40 md:w-56 md:h-56 m-auto mb-3 pointer-events-none mt-3"
-                        />
+                        <div className="flex w-40 h-40 md:w-56 md:h-56 m-auto mb-3 mt-3 justify-center">
+                          <img
+                            src={product.image}
+                            alt={product.title}
+                            className="max-w-40 max-h-40 md:max-w-56 md:max-h-56 m-auto pointer-events-none"
+                          />
+                        </div>
                         {/* product rating */}
                         <div className="flex gap-0.5 items-center">
                           <Star color="#ffbb00" fill="#ffbb00" size={13} />

@@ -1,36 +1,27 @@
 import ImageSlider from "../components/Slider/ImageSlider";
 import { NewProducts } from "../components/Home/NewProducts/NewProducts";
-import { productStore } from "../store/productStore";
-import { useEffect } from "react";
 import CategoryElement from "../components/Home/CategoryBlock/CategoryElements";
-import Banner from "../components/Banner/Banner";
+import Banner from "../components/Home/Banner/Banner";
+import CompanyBlock from "../components/Home/CompanyBlock/CompanyBlock";
 
 function Home() {
-  const { fetchProducts, isLoading } = productStore();
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  if (isLoading) return <div>Loading,,,,</div>;
-
   const myImages = [
     {
-      small: "/Home/slide_mobile.jpg",
-      medium: "/Home/slide_tablet.jpg",
-      large: "/Home/slide_desktop.jpg",
+      small: "/Home/SlideImage/slide_mobile.jpg",
+      medium: "/Home/SlideImage/slide_tablet.jpg",
+      large: "/Home/SlideImage/slide_desktop.jpg",
       alt: "Slide 1",
     },
     {
-      small: "/Home/slide_mobile.jpg",
-      medium: "/Home/slide_tablet.jpg",
-      large: "/Home/slide_desktop.jpg",
+      small: "/Home/SlideImage/slide_mobile.jpg",
+      medium: "/Home/SlideImage/slide_tablet.jpg",
+      large: "/Home/SlideImage/slide_desktop.jpg",
       alt: "Slide 2",
     },
     {
-      small: "/Home/slide_mobile.jpg",
-      medium: "/Home/slide_tablet.jpg",
-      large: "/Home/slide_desktop.jpg",
+      small: "/Home/SlideImage/slide_mobile.jpg",
+      medium: "/Home/SlideImage/slide_tablet.jpg",
+      large: "/Home/SlideImage/slide_desktop.jpg",
       alt: "Slide 3",
     },
   ];
@@ -41,6 +32,7 @@ function Home() {
       <NewProducts />
       <Banner />
       <CategoryElement />
+      <CompanyBlock />
     </div>
   );
 }

@@ -5,7 +5,6 @@ import type { Product } from "../../../types/product";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-// import { motion } from "motion/react";
 
 export const NewProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
