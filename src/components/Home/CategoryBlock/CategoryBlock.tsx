@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useTabProducts } from "../../../hooks/useTabProducts";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
@@ -12,6 +13,13 @@ interface CategoryBlockProps {
   initialSeries?: string;
 }
 
+const EMBLA_OPTIONS = {
+  align: "start" as const,
+  loop: false,
+  dragFree: true,
+  containScroll: "trimSnaps" as const,
+};
+
 export const CategoryBlock: React.FC<CategoryBlockProps> = ({
   title,
   category,
@@ -22,10 +30,13 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
   const { activeSeries, setActiveSeries, products, loading, error } =
     useTabProducts(category, initialSeries, 5);
 
-  const [emblaRef] = useEmblaCarousel({
-    align: "start",
-    loop: false,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(EMBLA_OPTIONS);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit();
+    }
+  }, [emblaApi, products]);
 
   return (
     <section className="text-white mb-10 container max-w-350 m-auto overflow-hidden">
@@ -69,62 +80,65 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
         </div>
 
         {/* Product Grid */}
-        {loading ? (
-          <div className="h-80 flex items-center justify-center text-gray-500">
-            Loading...
-          </div>
-        ) : error ? (
-          <div className="h-80 flex items-center justify-center text-red-500">
-            {error}
-          </div>
-        ) : (
-          <div className="relative group">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-2.5">
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="flex-[0_0_230px] md:flex-[0_0_234px] min-w-0 rounded-xl p-4 md:p-0 flex flex-col justify-between select-none"
-                  >
-                    <Link to="/">
-                      <div>
-                        <div className="flex w-40 h-40 md:w-56 md:h-56 m-auto mb-3 mt-3 justify-center">
-                          <img
-                            src={product.image}
-                            alt={product.title}
-                            className="max-w-40 max-h-40 md:max-w-56 md:max-h-56 m-auto pointer-events-none"
-                          />
-                        </div>
-                        {/* product rating */}
-                        <div className="flex gap-0.5 items-center">
-                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
-                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
-                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
-                          <Star color="#ffbb00" fill="#ffbb00" size={13} />
-                          <Star color="#c4c4c4" fill="#c4c4c4" size={13} />
-                          <div>
-                            <p className="text-sm text-stone-300 pl-1">
-                              Reviews (4)
-                            </p>
+        <div className="min-w-0 w-full">
+          {loading ? (
+            <div className="h-80 flex items-center justify-center text-gray-500">
+              Loading...
+            </div>
+          ) : error ? (
+            <div className="h-80 flex items-center justify-center text-red-500">
+              {error}
+            </div>
+          ) : (
+            <div className="relative group">
+              <div className="overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                  {products.map((product) => (
+                    <div
+                      key={product.id}
+                      className="flex-[0_0_230px] md:flex-[0_0_234px] min-w-0 rounded-xl p-4 md:p-0 flex flex-col justify-between select-none"
+                    >
+                      <Link to="/" draggable={false} className="select-none">
+                        <div>
+                          <div className="flex w-40 h-40 md:w-56 md:h-56 m-auto mb-3 mt-3 justify-center">
+                            <img
+                              src={product.image}
+                              alt={product.title}
+                              draggable={false}
+                              className="max-w-40 max-h-40 md:max-w-56 md:max-h-56 m-auto pointer-events-none"
+                            />
                           </div>
+                          {/* product rating */}
+                          <div className="flex gap-0.5 items-center">
+                            <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                            <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                            <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                            <Star color="#ffbb00" fill="#ffbb00" size={13} />
+                            <Star color="#c4c4c4" fill="#c4c4c4" size={13} />
+                            <div>
+                              <p className="text-sm text-stone-300 pl-1">
+                                Reviews (4)
+                              </p>
+                            </div>
+                          </div>
+                          <h4 className="text-sm font-normal mt-1 text-black">
+                            {product.title}
+                          </h4>
                         </div>
-                        <h4 className="text-sm font-normal mt-1 text-black">
-                          {product.title}
-                        </h4>
-                      </div>
 
-                      <div className="mt-2">
-                        <span className="text-base font-bold text-black mb-2">
-                          ${product.price}
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                        <div className="mt-2">
+                          <span className="text-base font-bold text-black mb-2">
+                            ${product.price}
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
