@@ -3,6 +3,8 @@ import { NewProducts } from "../components/Home/NewProducts/NewProducts";
 import CategoryElement from "../components/Home/CategoryBlock/CategoryElements";
 import Banner from "../components/Home/Banner/Banner";
 import CompanyBlock from "../components/Home/CompanyBlock/CompanyBlock";
+import CompanyReviews from "../components/CompanyReviews/CompanyReviews";
+import NewsBlock from "../components/Home/NewsBlock/NewsBlock";
 
 function Home() {
   const myImages = [
@@ -33,6 +35,10 @@ function Home() {
       <Banner />
       <CategoryElement />
       <CompanyBlock />
+      <div className="hidden xl:block">
+        <NewsBlock />
+      </div>
+      <CompanyReviews />
     </div>
   );
 }
