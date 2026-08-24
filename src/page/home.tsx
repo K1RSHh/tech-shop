@@ -5,6 +5,7 @@ import Banner from "../components/Home/Banner/Banner";
 import CompanyBlock from "../components/Home/CompanyBlock/CompanyBlock";
 import CompanyReviews from "../components/CompanyReviews/CompanyReviews";
 import NewsBlock from "../components/Home/NewsBlock/NewsBlock";
+import ShortInfo from "../components/Footer/ShortInfo";
 
 function Home() {
   const myImages = [
@@ -39,6 +40,7 @@ function Home() {
         <NewsBlock />
       </div>
       <CompanyReviews />
+      <ShortInfo />
     </div>
   );
 }
