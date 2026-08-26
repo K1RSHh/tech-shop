@@ -6,6 +6,7 @@ import CompanyBlock from "../components/Home/CompanyBlock/CompanyBlock";
 import CompanyReviews from "../components/CompanyReviews/CompanyReviews";
 import NewsBlock from "../components/Home/NewsBlock/NewsBlock";
 import ShortInfo from "../components/Footer/ShortInfo";
+import Footer from "../components/Footer/Footer";
 
 function Home() {
   const myImages = [
@@ -41,6 +42,7 @@ function Home() {
       </div>
       <CompanyReviews />
       <ShortInfo />
+      <Footer />
     </div>
   );
 }

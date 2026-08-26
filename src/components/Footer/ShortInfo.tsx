@@ -2,7 +2,7 @@ import { Headset, CircleUserRound, Tag } from "lucide-react";
 
 function ShortInfo() {
   return (
-    <div className="max-w-320 mx-auto mt-6 px-1">
+    <div className="max-w-7xl mx-auto mt-6 px-1">
       <div className="w-full flex flex-col md:flex-row gap-5 xl:gap-0 md:justify-between">
         <div className="mx-auto text-center flex flex-col">
           <div className="flex items-center justify-center">
