@@ -75,7 +75,7 @@ export default function NewsBlock() {
         {NewsArr.map((item) => (
           <div key={item.id} className="flex flex-col items-center">
             <img src={item.img} alt="news_img" />
-            <p className="max-w-46 text-xs text-center pt-2 pb-2.5">
+            <p className="max-w-46 text-xs font-medium text-center pt-2 pb-2.5">
               {item.text}
             </p>
             <p className="flex text-[10px] text-gray-400 font-bold">
