@@ -111,7 +111,7 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
                               </button>
                               <button
                                 title="Add to Cart"
-                                className="p-2 bg-white rounded-full shadow cursor-pointer hover:bg-red-50 hover:text-red-500 text-black transition-colors"
+                                className="p-2 bg-white rounded-full shadow cursor-pointer hover:bg-sky-200 hover:text-sky-800 text-black transition-colors"
                               >
                                 <ShoppingCart size={16} />
                               </button>
