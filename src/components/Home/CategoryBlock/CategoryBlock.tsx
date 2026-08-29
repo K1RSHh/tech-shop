@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useTabProducts } from "../../../hooks/useTabProducts";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
-import { Star } from "lucide-react";
+import { Star, Heart, ShoppingCart } from "lucide-react";
 
 interface CategoryBlockProps {
   title: string;
@@ -90,17 +90,32 @@ export const CategoryBlock: React.FC<CategoryBlockProps> = ({
               {error}
             </div>
           ) : (
-            <div className="relative group">
+            <div className="relative">
               <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                   {products.map((product) => (
                     <div
                       key={product.id}
-                      className="flex-[0_0_230px] md:flex-[0_0_234px] min-w-0 rounded-xl p-4 md:p-0 flex flex-col justify-between select-none"
+                      className="flex-[0_0_230px] md:flex-[0_0_234px] group relative min-w-0 rounded-xl p-4 md:p-0 flex flex-col justify-between select-none"
                     >
                       <Link to="/" draggable={false} className="select-none">
                         <div>
                           <div className="flex w-40 h-40 md:w-56 md:h-56 m-auto mb-3 mt-3 justify-center">
+                            {/* hover element */}
+                            <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 translate-x-3 group-hover:translate-x-0 transition-all duration-200 ease-out">
+                              <button
+                                title="Add to Wishlist"
+                                className="p-2 bg-white rounded-full shadow cursor-pointer hover:bg-red-50 hover:text-red-500 text-black transition-colors"
+                              >
+                                <Heart size={16} />
+                              </button>
+                              <button
+                                title="Add to Cart"
+                                className="p-2 bg-white rounded-full shadow cursor-pointer hover:bg-red-50 hover:text-red-500 text-black transition-colors"
+                              >
+                                <ShoppingCart size={16} />
+                              </button>
+                            </div>
                             <img
                               src={product.image}
                               alt={product.title}
