@@ -3,8 +3,7 @@ import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import type { Product } from "../../../types/product";
 import useEmblaCarousel from "embla-carousel-react";
-import { Link } from "react-router-dom";
-import { Star } from "lucide-react";
+import { ProductCard } from "../../ProductCard/ProductCard";
 
 export const NewProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -96,42 +95,7 @@ export const NewProducts = () => {
                 key={product.id}
                 className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] max-w-52 min-w-0 pl-4"
               >
-                <Link to="/">
-                  <div className="p-4 h-full flex flex-col justify-between transition-colors">
-                    <div>
-                      <div className="h-48 w-full rounded-xl overflow-hidden mb-4">
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                      {/* product rating */}
-                      <div className="flex gap-0.5 items-center">
-                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
-                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
-                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
-                        <Star color="#ffbb00" fill="#ffbb00" size={12} />
-                        <Star color="#c4c4c4" fill="#c4c4c4" size={12} />
-                        <div>
-                          <p className="text-sm text-stone-300 pl-1">
-                            Reviews (4)
-                          </p>
-                        </div>
-                      </div>
-                      <h3 className="text-sm h-14 font-normal text-black line-clamp-1">
-                        {product.title}
-                      </h3>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-between">
-                      <span className="text-xl font-bold text-black">
-                        ${product.price}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
