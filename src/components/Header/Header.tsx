@@ -187,7 +187,10 @@ function Header() {
                 </div>
                 <span className="flex h-0.5 w-full bg-gray-300 my-5"></span>
                 <div className="flex flex-col gap-4">
-                  <Link to="/" className="flex justify-between items-center">
+                  <Link
+                    to="/catalog"
+                    className="flex justify-between items-center"
+                  >
                     <p>Laptops</p>
                     <ChevronRight color="#000" size={15} />
                   </Link>
@@ -383,7 +386,7 @@ function Header() {
                   whileHover={{ scale: 1.05, color: "#2563EB" }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link to="/">Laptops</Link>
+                  <Link to="/catalog">Laptops</Link>
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, color: "#2563EB" }}
