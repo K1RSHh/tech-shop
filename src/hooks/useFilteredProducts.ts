@@ -11,6 +11,13 @@ import {
 import { db } from "../firebase";
 import type { Product } from "../types/product";
 
+interface FilterState {
+  category: string;
+  minPrice: number | null;
+  maxPrice: number | null;
+  sortBy: string;
+}
+
 export const useFilteredProducts = () => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);

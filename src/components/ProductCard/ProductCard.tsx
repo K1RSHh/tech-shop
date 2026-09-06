@@ -10,7 +10,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div draggable={false} className="select-none group z-40">
+    <div draggable={false} className="select-none group z-40 overflow-hidden">
       <div>
         <div className="flex w-40 h-40 md:w-56 md:h-56 m-auto mb-3 mt-3 justify-center items-center">
           {/* hover element */}

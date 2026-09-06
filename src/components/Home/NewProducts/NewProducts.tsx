@@ -89,11 +89,11 @@ export const NewProducts = () => {
         </div> */}
 
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex -ml-4 justify-between">
+          <div className="flex gap-2 justify-between">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] max-w-52 min-w-0 pl-4"
+                className="flex-[0_0_230px] md:flex-[0_0_234px] relative min-w-0 rounded-xl p-4 md:p-0 flex flex-col justify-between select-none"
               >
                 <ProductCard product={product} />
               </div>
